@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:form="http://www.springframework.org/tags/form">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' />
+</head>
+<body>
+<div class='card card-body bg-light'>
+    <form class="form-group" action="#"method="post" th:action="@{/transaction}" th:object="${transactionForm}">
+        <div class="form-group">
+            <label for="from">From: </label>
+            <select id="from" th:field="*{selectedWallet1}">
+                <option th:each="w : ${transactionForm.getWalletList()}" th:value="${w}" th:text="${w}">
+                </option>
+            </select><br/>
+        </div>
+        <div class="form-group">
+            <label for="to">To: </label>
+            <select id="to" th:field="*{selectedWallet2}">
+                <option th:each="w : ${transactionForm.getWalletList()}" th:value="${w}" th:text="${w}">
+                </option>
+            </select><br/>
+        </div>
+        <div class="form-group">
+            <label for="amount">Amount</label>
+            <input id="amount" type="text" th:field="*{inputAmount}" class="form-control"><br/>
+
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary">
+
+
+
+
+    </form>
+
+
+</div>
+
+</body>
+</html>
