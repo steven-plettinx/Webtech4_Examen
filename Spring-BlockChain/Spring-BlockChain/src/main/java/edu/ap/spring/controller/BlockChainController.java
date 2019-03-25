@@ -84,7 +84,17 @@ public class BlockChainController {
 
     @RequestMapping(path="/transaction", method = RequestMethod.POST)
     public ModelAndView createTransaction(@ModelAttribute("transactionForm") TransactionForm form) {
-        return new ModelAndView("view"); 
+
+        Wallet wallet1 = wallets.get(form.selectedWallet1);
+        Wallet wallet2 = wallets.get(form.selectedWallet2);
+
+        Transaction transaction = new Transaction(wallet1.getPublicKey(), wallet2.getPublicKey(), (float)form.inputAmount);
+        transaction.generateSignature(coinbase.getPrivateKey());
+
+        Block block = new Block();
+        block.addTransaction(transaction, bChain);
+
+        return new ModelAndView("transactionForm");
     }
 
 }

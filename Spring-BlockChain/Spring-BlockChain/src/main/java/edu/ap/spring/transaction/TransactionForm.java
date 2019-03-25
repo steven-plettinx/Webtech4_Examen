@@ -17,7 +17,7 @@ public class TransactionForm {
 
     public String selectedWallet1;
     public String selectedWallet2;
-    public String inputAmount;
+    public float inputAmount;
     public ArrayList<String> walletList;
 
     public ArrayList<String> getWalletList() {
@@ -48,11 +48,11 @@ public class TransactionForm {
         this.selectedWallet2 = selectedWallet2;
     }
 
-    public String getInputAmount() {
+    public float getInputAmount() {
         return inputAmount;
     }
 
-    public void setInputAmount(String inputAmount1) {
+    public void setInputAmount(float inputAmount1) {
         this.inputAmount = inputAmount1;
     }
 
