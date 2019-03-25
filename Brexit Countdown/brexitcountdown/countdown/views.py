@@ -12,5 +12,5 @@ def countdown(request):
     timeleft = brexit - now
     print(divmod(timeleft.total_seconds(), 60))
 
-    return render(request, 'templates/countdown.html', {'timeleft': timeleft.total_seconds()})
+    return render(request, 'countdown.html', {'timeleft': str(timeleft)})
 
