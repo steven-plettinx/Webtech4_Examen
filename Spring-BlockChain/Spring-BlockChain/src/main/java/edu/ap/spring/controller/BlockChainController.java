@@ -91,10 +91,10 @@ public class BlockChainController {
         Transaction transaction = new Transaction(wallet1.getPublicKey(), wallet2.getPublicKey(), (float)form.inputAmount);
         transaction.generateSignature(coinbase.getPrivateKey());
 
-        Block block = new Block();
+        Block block = bChain.getBlocks().get(bChain.getBlocks().size() -1);
         block.addTransaction(transaction, bChain);
 
-        return new ModelAndView("transactionForm");
+        return new ModelAndView("transactionForm", "transactionForm", form);
     }
 
 }
